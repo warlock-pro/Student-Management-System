@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<!--Coded by Jayanth Valmiki-->
+<body>
+<!--Coded by Jayanth Valmiki-->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student List</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students}">Student Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<!--Coded by Jayanth Valmiki-->
+<div class="container">
+<!--    <div class="row">-->
+<!--        <h1 class="text-center">Student List</h1>-->
+<!--    </div>-->
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/students/new}" class="btn btn-success btn-sm mb-3">New Student</a>
+        </div>
+    </div>
+    <table class="table table-stripped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>S.No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Manage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--Coded by Jayanth Valmiki-->
+        <tr th:each = "student: ${students}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.email}"></td>
+            <td>
+                <a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-primary">
+                    Update
+                </a>
+                <a th:href="@{/students/{id}(id=${student.id})}" class="btn btn-warning">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+        <!--Coded by Jayanth Valmiki-->
+    </table>
+    <h6 class="text-muted text-center">Coded By JAYANTH VALMIKI</h6>
+</div>
+
+</body>
+</html>
+<!--Coded by Jayanth Valmiki-->
